@@ -26,8 +26,8 @@ class Log:
                 timestamp_str = line.split("[")[1].split("]")[0]
                 try:
                     timestamp = datetime.strptime(timestamp_str, "%Y-%m-%d %H:%M:%S")
-                    # subtract 6 hours from timestamp to account for timezone
-                    timestamp = timestamp - timedelta(hours=6)
+                    # subtract hours from timestamp to account for timezone
+                    timestamp = timestamp - timedelta(hours=5)
                     self.accessed.append(Entry(timestamp, line.split("]")[1]))
                 except ValueError as e:
                     print(f"Error parsing timestamp: {e}")
