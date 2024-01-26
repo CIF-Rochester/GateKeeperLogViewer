@@ -1,6 +1,8 @@
 import argparse
 from datetime import datetime, timedelta
 
+LOG_FILE = "/var/log/gatekeeper/debug.log"
+
 class Entry:
     def __init__(self, timestamp: datetime, msg: str) -> None:
         self.timestamp = timestamp
@@ -50,7 +52,7 @@ class Log:
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Parse and display log file entries.")
-    parser.add_argument("-f", "--file", required=True, help="Path to the log file.")
+    parser.add_argument("-f", "--file", help="Path to the log file.", default=LOG_FILE)
     parser.add_argument("--day", help="Show entries for a specific day (YYYY-MM-DD).")
     parser.add_argument("--from", dest="start", help="Start of date range (YYYY-MM-DD).")
     parser.add_argument("--to", dest="end", help="End of date range (YYYY-MM-DD).")
